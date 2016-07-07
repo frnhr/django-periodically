@@ -4,10 +4,11 @@ from __future__ import \
 from django.apps import AppConfig
 
 from periodically import autodiscover
-
+from . import settings
 
 class PeriodicallyConfig(AppConfig):
     name = 'periodically'
 
     def ready(self):
-        autodiscover()
+        if settings.AUTODISCOVER:
+            autodiscover()
